@@ -10995,72 +10995,111 @@ header.masthead h1, header.masthead .h1 {
 }
 
 /* ==========================================================================
-   1. PC 화면 (넓은 화면: 992px 이상) 스타일 및 순차 애니메이션
+   1. 전 화면 공통: 배경 투명화, 세로 정렬 및 순차 애니메이션 (모바일 포함)
    ========================================================================== */
-@media (min-width: 992px) {
-    /* 드롭다운 메뉴 본체 투명화 및 수직(세로) 정렬 */
-    .nav-item.dropdown .dropdown-menu {
-        display: block !important;
-        visibility: hidden;
-        opacity: 0;
-        transform: translateY(15px);
-        transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
-        
-        background-color: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        padding: 0.5rem 0 !important;
-    }
+.nav-item.dropdown .dropdown-menu {
+    display: block !important;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    
+    /* 흰색 배경 상자 및 테두리 완전히 제거 (100% 투명) */
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0.5rem 0 !important;
+}
 
-    /* Request에 커서를 올리면 드롭다운 메뉴 등장 */
-    .nav-item.dropdown:hover .dropdown-menu {
-        visibility: visible;
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Request 메뉴에 커서를 올리면 하위 메뉴 세로로 등장 */
+.nav-item.dropdown:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
 
-    /* 하위 메뉴 아이템들의 최초 숨김 상태 */
-    .dropdown-menu .dropdown-item {
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: opacity 0.4s ease, transform 0.4s ease;
-        padding: 0.3rem 0 !important; /* 세로 정렬 시 예쁜 간격 조율 */
-    }
+/* 하위 메뉴 아이템들의 최초 숨김 상태 및 간격 조율 */
+.dropdown-menu .dropdown-item {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    padding: 0.3rem 0 !important;
+}
 
-    /* 커서를 올렸을 때 하위 아이템들이 스르륵 등장 */
-    .nav-item.dropdown:hover .dropdown-menu .dropdown-item {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* 커서를 올렸을 때 하위 아이템들이 위에서 아래로 등장 */
+.nav-item.dropdown:hover .dropdown-menu .dropdown-item {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-    /* ⭐ [핵심 포인트] 애니메이션이 순차적으로(Staggered) 실행되도록 딜레이 시간 차 부여 */
-    .nav-item.dropdown:hover .dropdown-menu li:nth-child(1) .dropdown-item { transition-delay: 0.05s; }
-    .nav-item.dropdown:hover .dropdown-menu li:nth-child(2) .dropdown-item { transition-delay: 0.12s; }
-    .nav-item.dropdown:hover .dropdown-menu li:nth-child(3) .dropdown-item { transition-delay: 0.19s; }
-    .nav-item.dropdown:hover .dropdown-menu li:nth-child(4) .dropdown-item { transition-delay: 0.26s; }
+/* ⏳ 하위 메뉴들이 한 줄씩 차례대로 스르륵 내려오는 시차(Delay) 부여 */
+.nav-item.dropdown:hover .dropdown-menu li:nth-child(1) .dropdown-item { transition-delay: 0.05s; }
+.nav-item.dropdown:hover .dropdown-menu li:nth-child(2) .dropdown-item { transition-delay: 0.12s; }
+.nav-item.dropdown:hover .dropdown-menu li:nth-child(3) .dropdown-item { transition-delay: 0.19s; }
+.nav-item.dropdown:hover .dropdown-menu li:nth-child(4) .dropdown-item { transition-delay: 0.26s; }
+
+/* ==========================================================================
+   2. ⭐ 핵심: 커서를 댔을 때 배경 블록을 없애고 글자색만 변경하는 스타일
+   ========================================================================== */
+.dropdown-menu .dropdown-item:hover {
+    /* 두 번째 사진에 나온 흰색/회색 네모 박스를 완전히 투명하게 지웁니다 */
+    background-color: transparent !important;
+    /* 마우스를 올렸을 때 텍스트 컬러만 스타트 부트스트랩 시그니처 주황색으로 변경 */
+    color: #fff !important; 
 }
 
 /* ==========================================================================
-   2. 모바일/테블릿 화면 (좁은 화면: 991px 이하) 우측 정렬 스타일
+   3. 모바일/좁은 화면 전용 위치 및 여백 미세 조율 (991px 이하)
    ========================================================================== */
 @media (max-width: 991.98px) {
-    /* 모바일 환경에서는 굳이 숨기지 않고 Request 아래/우측에 상시 대기 혹은 터치 시 노출 */
     .nav-item.dropdown .dropdown-menu {
-        display: block !important;
+        display: none !important;
         position: relative !important;
         float: none !important;
-        background-color: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        
-        /* 💡 리퀘스트 글자 기준 오른쪽 공간에 세로로 나오도록 왼쪽 여백(패딩) 부여 */
-        padding-left: 1.5rem !important; 
+        padding: 0 0 0 1rem !important;
         margin: 0 !important;
     }
-
-    /* 모바일에서도 텍스트 정렬 및 스타일을 모바일 메뉴와 동기화 */
+    
+    /* 💡 [버그 방지 조치] 평소 모바일 하위 메뉴 아이템들을 확실하게 투명화 상태로 묶어둡니다 */
     .dropdown-menu .dropdown-item {
-        padding: 0.4rem 0 !important;
         font-size: 0.9rem;
+        opacity: 0; 
+    }
+
+    .nav-item.dropdown:hover .dropdown-menu,
+    .nav-item.dropdown .dropdown-menu.show {
+        display: block !important;
+    }
+    
+    .nav-item.dropdown:hover .dropdown-menu .dropdown-item,
+    .nav-item.dropdown .dropdown-menu.show .dropdown-item {
+        /* ⭐ 핵심: forwards를 both로 바꾸어 대기 시간(Delay) 동안 투명도를 강제 유지시킵니다 */
+        animation: fadeInMob 0.3s ease both; 
+        transition: none !important; 
+    }
+    
+    /* 좁은 화면 스르륵 시차(Delay) 레이어 연산 */
+    .nav-item.dropdown:hover .dropdown-menu li:nth-child(1) .dropdown-item, .nav-item.dropdown .dropdown-menu.show li:nth-child(1) .dropdown-item { animation-delay: 0.05s; }
+    .nav-item.dropdown:hover .dropdown-menu li:nth-child(2) .dropdown-item, .nav-item.dropdown .dropdown-menu.show li:nth-child(2) .dropdown-item { animation-delay: 0.11s; }
+    .nav-item.dropdown:hover .dropdown-menu li:nth-child(3) .dropdown-item, .nav-item.dropdown .dropdown-menu.show li:nth-child(3) .dropdown-item { animation-delay: 0.17s; }
+    .nav-item.dropdown:hover .dropdown-menu li:nth-child(4) .dropdown-item, .nav-item.dropdown .dropdown-menu.show li:nth-child(4) .dropdown-item { animation-delay: 0.23s; }
+    
+    .dropdown-menu .dropdown-item:hover {
+        background-color: transparent !important;
+        color: #f4623a !important; 
+    }
+}
+
+/* ==========================================================================
+   4. 💡 [누락 해결] 모바일 스르륵 애니메이션 실제 연산 법칙 정의
+   ========================================================================== */
+@keyframes fadeInMob {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
