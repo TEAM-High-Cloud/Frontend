@@ -10993,3 +10993,74 @@ header.masthead h1, header.masthead .h1 {
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xxl .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
 }
+
+/* ==========================================================================
+   1. PC 화면 (넓은 화면: 992px 이상) 스타일 및 순차 애니메이션
+   ========================================================================== */
+@media (min-width: 992px) {
+    /* 드롭다운 메뉴 본체 투명화 및 수직(세로) 정렬 */
+    .nav-item.dropdown .dropdown-menu {
+        display: block !important;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(15px);
+        transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+        
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0.5rem 0 !important;
+    }
+
+    /* Request에 커서를 올리면 드롭다운 메뉴 등장 */
+    .nav-item.dropdown:hover .dropdown-menu {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 하위 메뉴 아이템들의 최초 숨김 상태 */
+    .dropdown-menu .dropdown-item {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        padding: 0.3rem 0 !important; /* 세로 정렬 시 예쁜 간격 조율 */
+    }
+
+    /* 커서를 올렸을 때 하위 아이템들이 스르륵 등장 */
+    .nav-item.dropdown:hover .dropdown-menu .dropdown-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* ⭐ [핵심 포인트] 애니메이션이 순차적으로(Staggered) 실행되도록 딜레이 시간 차 부여 */
+    .nav-item.dropdown:hover .dropdown-menu li:nth-child(1) .dropdown-item { transition-delay: 0.05s; }
+    .nav-item.dropdown:hover .dropdown-menu li:nth-child(2) .dropdown-item { transition-delay: 0.12s; }
+    .nav-item.dropdown:hover .dropdown-menu li:nth-child(3) .dropdown-item { transition-delay: 0.19s; }
+    .nav-item.dropdown:hover .dropdown-menu li:nth-child(4) .dropdown-item { transition-delay: 0.26s; }
+}
+
+/* ==========================================================================
+   2. 모바일/테블릿 화면 (좁은 화면: 991px 이하) 우측 정렬 스타일
+   ========================================================================== */
+@media (max-width: 991.98px) {
+    /* 모바일 환경에서는 굳이 숨기지 않고 Request 아래/우측에 상시 대기 혹은 터치 시 노출 */
+    .nav-item.dropdown .dropdown-menu {
+        display: block !important;
+        position: relative !important;
+        float: none !important;
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        
+        /* 💡 리퀘스트 글자 기준 오른쪽 공간에 세로로 나오도록 왼쪽 여백(패딩) 부여 */
+        padding-left: 1.5rem !important; 
+        margin: 0 !important;
+    }
+
+    /* 모바일에서도 텍스트 정렬 및 스타일을 모바일 메뉴와 동기화 */
+    .dropdown-menu .dropdown-item {
+        padding: 0.4rem 0 !important;
+        font-size: 0.9rem;
+    }
+}
