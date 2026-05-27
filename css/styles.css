@@ -11103,3 +11103,15 @@ header.masthead h1, header.masthead .h1 {
         transform: translateY(0);
     }
 }
+
+/* 유저 가이드 통짜 카드 호버 효과 */
+.custom-guide-link {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+}
+
+/* 마우스를 올리면 카드 전체가 위로 6px 부드럽게 들리면서 약간 선명해집니다 */
+.custom-guide-link:hover {
+    transform: translateY(-6px);
+    opacity: 0.85;
+}
