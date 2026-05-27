@@ -11115,3 +11115,14 @@ header.masthead h1, header.masthead .h1 {
     transform: translateY(-6px);
     opacity: 0.85;
 }
+/*team info 호버 코드 */
+.team-member-card {
+    display: block;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* 깃허브 링크가 연결된 팀원에게 마우스를 올리면 글자와 아이콘이 살짝 밝아지며 위로 까딱 들립니다 */
+.team-member-card:hover {
+    opacity: 0.8;
+    transform: translateY(-4px);
+}
