@@ -32,4 +32,4 @@ jobs:
       # 4. S3 버킷으로 모든 파일을 복사(동기화)합니다. (CD)
       - name: Deploy to S3 (CD)
         run: |
-          aws s3 sync . s3://highcloud-portal-167781471242-ap-northeast-2-an --delete --exclude ".github/*"
+          aws s3 sync . s3://highcloud-portal-167781471242-ap-northeast-2-an --delete --exclude ".github/*" --exclude ".git/*"
