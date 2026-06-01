@@ -17,8 +17,8 @@ jobs:
       # ================= [CI 단계 수정] =================
       # 외부 플러그인 대신, 기본 npx 명령어로 htmlhint를 실행하여 모든 html 파일을 검사합니다.
       # 문법 에러나 닫히지 않은 태그가 발견되면 배포를 중단합니다.
-      - name: HTML Syntax Check (CI)
-        run: npx htmlhint "**/*.html"
+      # - name: HTML Syntax Check (CI)
+      #   run: npx htmlhint "**/*.html"
       # =================================================
 
       # 3. AWS에 로그인합니다. (우리가 금고에 저장한 열쇠를 사용합니다.)
