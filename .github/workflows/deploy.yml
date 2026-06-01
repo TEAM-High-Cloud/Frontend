@@ -1,0 +1,37 @@
+name: Deploy Frontend to S3
+
+on:
+  push:
+    branches:
+      - main # main 브랜치에 push(또는 merge)될 때 작동합니다.
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 깃허브 레포지토리의 코드를 로봇 컴퓨터로 가져옵니다.
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ================= [CI] ==========================
+      # 2. HTML 파일들에 문법 에러나 닫히지 않은 태그가 없는지 검사합니다.
+      # 만약 에러가 발견되면 이 단계에서 실패(Red)가 뜨며 아래 S3 배포는 실행되지 않습니다.
+      - name: HTML Syntax Check (CI)
+        uses: htmlhint/htmlhint-action@v2
+        with:
+          bundle-and-run: true
+      # =================================================
+
+      # 3. AWS에 로그인합니다. (우리가 금고에 저장한 열쇠를 사용합니다.)
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2 # 서울 리전
+
+      # 4. S3 버킷으로 모든 파일을 복사(동기화)합니다. (CD)
+      - name: Deploy to S3 (CD)
+        run: |
+          aws s3 sync . s3://highcloud-portal-167781471242-ap-northeast-2-an --delete --exclude ".github/*"
