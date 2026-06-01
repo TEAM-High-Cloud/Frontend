@@ -14,13 +14,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # ================= [CI] ==========================
-      # 2. HTML 파일들에 문법 에러나 닫히지 않은 태그가 없는지 검사합니다.
-      # 만약 에러가 발견되면 이 단계에서 실패(Red)가 뜨며 아래 S3 배포는 실행되지 않습니다.
+      # ================= [CI 단계 수정] =================
+      # 외부 플러그인 대신, 기본 npx 명령어로 htmlhint를 실행하여 모든 html 파일을 검사합니다.
+      # 문법 에러나 닫히지 않은 태그가 발견되면 배포를 중단합니다.
       - name: HTML Syntax Check (CI)
-        uses: htmlhint/htmlhint-action@v2
-        with:
-          bundle-and-run: true
+        run: npx htmlhint "**/*.html"
       # =================================================
 
       # 3. AWS에 로그인합니다. (우리가 금고에 저장한 열쇠를 사용합니다.)
