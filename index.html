@@ -28,22 +28,33 @@
 </a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#Guide">User Guide</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" id="requestDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Request
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="requestDropdown">
-                                <li><a class="dropdown-item nav-link" href="https://docs.google.com/forms/u/1/d/15ikvNKWV16pvy9zh9nm0lDw6Klsl0T5sRZMZB3eQkSg/edit" target="_blank">프로젝트 생성 신청</a></li>
-                                <li><a class="dropdown-item nav-link" href="https://docs.google.com/forms/d/1BZBahRn88dhP_DjkXa7WIlY1qpxlqrOB0u0TsydtmfI/edit" target="_blank">기존 프로젝트 유저 추가 신청</a></li>
-                                <li><a class="dropdown-item nav-link" href="https://docs.google.com/forms/d/1M2kIVmSwrVXqZ6phX77-3BMMXMTGIMio1LKJFMH-x6U/edit" target="_blank">유저 삭제 신청</a></li>
-                                <li><a class="dropdown-item nav-link" href="https://docs.google.com/forms/d/1u9tvctqNJ9y6CWM7siOA643wyaaGUHeDCiHkfxWKJdo/edit" target="_blank">프로젝트 삭제 신청</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="#teaminfo">Team Info</a></li>
-                    </ul>
+                    <!-- 🔍 index.html의 상단 메뉴 구역을 아래 코드로 통째로 교체하세요 -->
+<ul class="navbar-nav ms-auto my-2 my-lg-0">
+    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+    <li class="nav-item"><a class="nav-link" href="#teaminfo">Team Info</a></li>
+    
+    <li class="nav-item dropdown">
+        <a class="nav-link" href="#" id="requestDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Request
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="requestDropdown">
+            <li><a class="dropdown-item nav-link" href="https://docs.google.com/forms/u/1/d/15ikvNKWV16pvy9zh9nm0lDw6Klsl0T5sRZMZB3eQkSg/edit" target="_blank">프로젝트 생성 신청</a></li>
+            <li><a class="dropdown-item nav-link" href="https://docs.google.com/forms/d/1BZBahRn88dhP_DjkXa7WIlY1qpxlqrOB0u0TsydtmfI/edit" target="_blank">기존 프로젝트 유저 추가 신청</a></li>
+            <li><a class="dropdown-item nav-link" href="https://docs.google.com/forms/d/1M2kIVmSwrVXqZ6phX77-3BMMXMTGIMio1LKJFMH-x6U/edit" target="_blank">유저 삭제 신청</a></li>
+            <li><a class="dropdown-item nav-link" href="https://docs.google.com/forms/d/1u9tvctqNJ9y6CWM7siOA643wyaaGUHeDCiHkfxWKJdo/edit" target="_blank">프로젝트 삭제 신청</a></li>
+        </ul>
+    </li>
+
+    <li class="nav-item dropdown">
+        <a class="nav-link" href="#" id="guideDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            User Guide
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="guideDropdown">
+            <li><a class="dropdown-item nav-link" href="instance-guide.html">인스턴스 생성 방법</a></li>
+            <li><a class="dropdown-item nav-link" href="ssh-guide.html">SSH 접속 방법</a></li>
+        </ul>
+    </li>
+</ul>
                 </div>
             </div>
         </nav>
@@ -103,34 +114,7 @@
 
         </div> </div>
 </section>
-        <!-- Guide-->
-        <section class="page-section" id="Guide">
-    <div class="container px-4 px-lg-5">
-        <h2 class="text-center mt-0">User Guide</h2>
-        <hr class="divider" />
         
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            
-            <div class="col-lg-5 col-md-6 text-center">
-                <a href="instance-guide.html" class="d-block mt-5 p-4 text-decoration-none text-dark custom-guide-link">
-                    <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">인스턴스 생성 방법</h3>
-                    <p class="text-muted mb-0">오픈스택 대시보드(Skyline)에서 가상 머신을 생성하고 리소스를 할당하는 전체 프로세스</p>
-                </a>
-            </div>
-
-            <div class="col-lg-5 col-md-6 text-center">
-                <a href="ssh-guide.html" class="d-block mt-5 p-4 text-decoration-none text-dark custom-guide-link">
-                    <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
-                    <h3 class="h4 mb-2">SSH 접속 방법</h3>
-                    <p class="text-muted mb-0">생성된 인스턴스에 외부 도구를 활용하여 원격 터미널로 연결</p>
-                </a>
-            </div>
-            
-        </div>
-    </div>
-</section>
-</section>
         <!-- teaminfo-->
         <section class="page-section bg-dark text-white" id="teaminfo">
     <div class="container px-4 px-lg-5 text-center">
@@ -144,8 +128,8 @@
                     <div class="mb-3">
                         <i class="bi-person-circle text-white" style="font-size: 4.5rem;"></i>
                     </div>
-                    <h4 class="h5 fw-bold mb-1">홍길동</h4>
-                    <p class="text-white-50 small">PM / Infrastructure</p>
+                    <h4 class="h5 fw-bold mb-1">배유하</h4>
+                    <p class="text-white-50 small"></p>
                 </a>
             </div>
 
@@ -154,8 +138,8 @@
                     <div class="mb-3">
                         <i class="bi-person-circle text-white" style="font-size: 4.5rem;"></i>
                     </div>
-                    <h4 class="h5 fw-bold mb-1">김철수</h4>
-                    <p class="text-white-50 small">FastAPI / Automation</p>
+                    <h4 class="h5 fw-bold mb-1">여지환</h4>
+                    <p class="text-white-50 small"></p>
                 </a>
             </div>
 
@@ -164,8 +148,8 @@
                     <div class="mb-3">
                         <i class="bi-person-circle text-white" style="font-size: 4.5rem;"></i>
                     </div>
-                    <h4 class="h5 fw-bold mb-1">이영희</h4>
-                    <p class="text-white-50 small">Frontend UI</p>
+                    <h4 class="h5 fw-bold mb-1">이채운</h4>
+                    <p class="text-white-50 small"></p>
                 </a>
             </div>
 
@@ -174,8 +158,8 @@
                     <div class="mb-3">
                         <i class="bi-person-circle text-white" style="font-size: 4.5rem;"></i>
                     </div>
-                    <h4 class="h5 fw-bold mb-1">이영희</h4>
-                    <p class="text-white-50 small">Frontend UI</p>
+                    <h4 class="h5 fw-bold mb-1">신지훈</h4>
+                    <p class="text-white-50 small"></p>
                 </a>
             </div>
 
@@ -184,8 +168,8 @@
                     <div class="mb-3">
                         <i class="bi-person-circle text-white" style="font-size: 4.5rem;"></i>
                     </div>
-                    <h4 class="h5 fw-bold mb-1">최유진</h4>
-                    <p class="text-white-50 small">Security / Network</p>
+                    <h4 class="h5 fw-bold mb-1">김하영</h4>
+                    <p class="text-white-50 small"></p>
                 </a>
             </div>
 
